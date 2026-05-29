@@ -1,7 +1,7 @@
 import tkinter as tk
 import random
 
-# ── Config ────────────────────────────────────────────────────────────────────
+# Config─
 WIDTH        = 600
 HEIGHT       = 600
 CELL         = 20
@@ -11,7 +11,7 @@ START_SPEED  = 120          # ms between frames (lower = faster)
 SPEED_STEP   = 5            # ms faster every 5 food eaten
 MIN_SPEED    = 50
 
-# ── Colors ────────────────────────────────────────────────────────────────────
+# Colors─
 BG           = "#0d1117"
 GRID_COLOR   = "#161b22"
 SNAKE_HEAD   = "#3fb950"
@@ -35,7 +35,7 @@ class SnakeGame:
         self._bind_keys()
         self.new_game()
 
-    # ── UI setup ──────────────────────────────────────────────────────────────
+    # UI setup ─
     def _build_ui(self):
         # Top bar
         bar = tk.Frame(self.root, bg="#161b22", pady=8)
@@ -70,7 +70,7 @@ class SnakeGame:
     def _bind_keys(self):
         self.root.bind("<KeyPress>", self._on_key)
 
-    # ── Game state ────────────────────────────────────────────────────────────
+    # Game state
     def new_game(self):
         self._cancel_loop()
         self.direction   = "Right"
@@ -93,7 +93,7 @@ class SnakeGame:
                  if (r, c) not in self.snake]
         self.food = random.choice(empty)
 
-    # ── Main loop ─────────────────────────────────────────────────────────────
+    # Main loop 
     def _loop(self):
         if self.paused or self.game_over:
             return
@@ -151,7 +151,7 @@ class SnakeGame:
             show_restart=True
         )
 
-    # ── Drawing ───────────────────────────────────────────────────────────────
+    # Drawing
     def _draw(self):
         self.canvas.delete("all")
         self._draw_grid()
@@ -216,7 +216,7 @@ class SnakeGame:
         self.high_label.config(text=f"Best: {max(self.high_score, self.score)}")
         self.level_label.config(text=f"Level: {self.level}")
 
-    # ── Input ─────────────────────────────────────────────────────────────────
+    # Input
     _OPPOSITES = {"Up": "Down", "Down": "Up", "Left": "Right", "Right": "Left"}
     _KEY_MAP   = {
         "Up": "Up",    "w": "Up",    "W": "Up",
